@@ -13,6 +13,8 @@ body {
         height: 12vh;
         width: 7vw;
         object-fit: cover;
+        user-select: none;
+        -webkit-user-drag: none;
     }
     position: absolute;
     left: 0;
