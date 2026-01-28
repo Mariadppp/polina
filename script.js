@@ -1,6 +1,7 @@
 let player = window.document.querySelector('#polina');
 let rightPosition = 0;
 let topPosition = 0;
+let keys = {};
 let canvas = window.document.querySelector('#canvas');
 let full = window.document.querySelector('#full');
 let music = window.document.querySelector('#music');
@@ -44,56 +45,50 @@ const moveDown = () => {
     player.style.bottom = `${topPosition}vw`;
 }
 function gameLoop() {
-    if (direction === 'right') {
+    let moving = keys.right || keys.left || keys.up || keys.down;
+    if (keys.right) {
         moveRight();
-    } else if (direction === 'left') {
+     } else if (keys.left) {
         moveLeft();
-    }
-    if (direction === 'up') {
+     }
+     if (keys.up) {
         moveUp();
-    }
-    if (direction === 'down') {
+     } else if (keys.down) {
         moveDown();
-    }
+     }
     
     animationId = requestAnimationFrame(gameLoop);
 }
 window.onkeydown = (event) => {
     if (event.key === 'd' || event.key === 'D' || event.key === 'в' || event.key === 'В') {
-        direction = 'right';
-        if (!animationId) {
-            gameLoop();
-        }
+        keys.right = true;
     }
     if (event.key === 'a' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф') {
-        direction = 'left';
-        if (!animationId) {
-            gameLoop();
-        }
+        keys.left = true;
     }
     if (event.key === 'w' || event.key === 'W' || event.key === 'ц' || event.key === 'Ц') {
-        direction = 'up';
-        if (!animationId) {
-            gameLoop();
-        }
+        keys.up = true;
     }
     if (event.key === 's' || event.key === 'S' || event.key === 'ы' || event.key === 'Ы') {
-        direction = 'down';
-        if (!animationId) {
-            gameLoop();
-        }
+        keys.down = true;
+    }
+    if (!animationId) {
+        gameLoop();
     }
 };
 
 window.onkeyup = (event) => {
     console.log("event checks")
-    if (
-        (direction === 'right' && (event.key === 'd' || event.key === 'D' || event.key === 'в' || event.key === 'В')) ||
-        (direction === 'left' && (event.key === 'a' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф')) ||
-        (direction === 'up' && (event.key === 'w' || event.key === 'W' || event.key === 'ц' || event.key === 'Ц')) ||
-        (direction === 'down' && (event.key === 's' || event.key === 'S' || event.key === 'ы' || event.key === 'Ы'))
-    ) {
-        direction = null;
-        console.log("null direction")
+    if (event.key === 'd' || event.key === 'D' || event.key === 'в' || event.key === 'В') {
+        keys.right = false;
+    }
+    if (event.key === 'a' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф') {
+        keys.left = false;
+    }
+    if (event.key === 'w' || event.key === 'W' || event.key === 'ц' || event.key === 'Ц') {
+        keys.up = false;
+    }
+    if (event.key === 's' || event.key === 'S' || event.key === 'ы' || event.key === 'Ы') {
+        keys.down = false;
     }
 };
