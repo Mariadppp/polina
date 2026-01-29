@@ -202,6 +202,7 @@ homeButton.onclick = () => exitGame();
 function exitGame() {
     gameMenu.style.display = 'flex';
     canvas2.style.display = 'none';
+    document.body.style.cursor = 'default';
 }
 document.addEventListener('mousedown', (e) => {
     hand1.src = 'assets/hand2.png';
