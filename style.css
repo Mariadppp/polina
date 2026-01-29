@@ -46,14 +46,8 @@ body {
 .button {
     width: 30vw;
     height: 30vw;
-    border-radius: 2vw;
-    img{
-        width: 30vw;
-        height: 30vw;
-        object-fit: cover;
-        user-select: none;
-        -webkit-user-drag: none;
-    }
+    border-radius: 3vw;
+    background-size: cover;
 }
 .hand1{
     position: fixed;
