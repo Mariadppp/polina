@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="canvas">
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="menu" id="menu">
+        <button id="game1" class="button"><img src="assets/game1.jpg"></button>
+        <button id="game2" class="button"><img src="assets/cat.jpg"></button>
+        <button id="game3" class="button">3</button>
+    </div>
+    </div>
+    <div id="canvas" style="display: none;">
         <div id="screamer" style="display: none;"> <img src="assets/nagiev.jpg"></div>
         <div>
             <img src="assets/background.jpg" style="position: absolute; left: 0; bottom: 0; width: 100%; user-select: none; -webkit-user-drag: none;">
         </div>
         <img src="assets/hotdog.png" id="full" style="width: 40px; height: 40px; position: absolute; top: 20px; right: 20px; user-select: none; -webkit-user-drag: none;">
         <img src="assets/noMusic.svg" id="music" style="width: 40px; height: 40px; position: absolute; top: 20px; right: 60px; user-select: none; -webkit-user-drag: none;">
+        <img src="assets/home.svg" id="home" style="width: 40px; height: 40px; position: absolute; top: 20px; right: 110px; user-select: none; -webkit-user-drag: none; cursor: pointer;">
+
     <div class="player" id="polina">
         <img src="assets/polina.png">
     </div>
@@ -48,6 +57,12 @@
      <div class="coin" style="left: 90vw; bottom: 5vw;" id="10">
         <img src="assets/hotdog2.png">
     </div>
+    </div>
+    <div id="canvas2" style="display: none;">
+        <img src="assets/hand1.png" class="hand1">
+        <div class="fat-cat" id="cat1"><img src="assets/cat1.png"></div>
+        <div class="fat-cat" id="cat2"><img src="assets/cat2.png"></div>
+        <div class="fat-cat" id="cat3"><img src="assets/cat3.png"></div>
     </div>
     <script src="script.js"></script>
 </body>

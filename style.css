@@ -5,6 +5,7 @@
 }
 body {
     overflow: hidden;
+    background-color: #FFE4F8;
 }
 .player {
     height: 12vh;
@@ -33,9 +34,52 @@ body {
         -webkit-user-drag: none;
     }
 }
-
-#screamer {
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 4vw;
+    flex-direction: row;
+}
+.button {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 2vw;
+    img{
+        width: 30vw;
+        height: 30vw;
+        object-fit: cover;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+}
+.hand1{
     position: fixed;
+    width: 30vw;
+    height: 30vw;
+    pointer-events: none;
+    z-index: 9999;
+    transition: left 0.1s ease-out, top 0.1s ease-out; 
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.fat-cat{
+    position: absolute;
+    img{
+
+        width: 30vw;
+        object-fit: cover;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+}
+#screamer {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100vw;
     height: 100vh;
     background: black;
@@ -51,4 +95,15 @@ body {
         -webkit-user-drag: none;
     }
 }
-
+#cat1 {
+    left: 10vw;
+    bottom: 5vw;
+}
+#cat2 {
+    left: 32vw;
+    bottom: 20vw;
+}
+#cat3 {
+    left: 63vw;
+    bottom: 7vw;
+}
