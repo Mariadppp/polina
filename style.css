@@ -6,6 +6,7 @@
 body {
     overflow: hidden;
     background-color: #FFE4F8;
+    cursor: url("assets/cursor.png"), pointer;
 }
 .player {
     height: 12vh;
@@ -48,6 +49,7 @@ body {
     height: 30vw;
     border-radius: 3vw;
     background-size: cover;
+    cursor: pointer;
 }
 .hand1{
     position: fixed;
@@ -69,6 +71,28 @@ body {
         user-select: none;
         -webkit-user-drag: none;
     }
+}
+.gun{
+    position: fixed;
+    height: 20vw;
+    pointer-events: none;
+    z-index: 9999;
+    transition: left 0.1s ease-out, top 0.1s ease-out; 
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.mole{
+    position: fixed;
+    height: 30vw;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    transition: none; 
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    animation: moleMove 5s infinite alternate ease-in-out;
 }
 #screamer {
     position: fixed !important;
@@ -100,4 +124,49 @@ body {
 #cat3 {
     left: 63vw;
     bottom: 7vw;
+}
+#mole1 {
+    animation: moveDiagonal 3s linear infinite;
+}
+
+#mole2 {
+    animation: moveDiagonal 5s linear infinite reverse;
+}
+
+#mole3 {
+    animation: moveDiagonal 7s linear infinite alternate;
+}
+@keyframes moleMove {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+@keyframes moveDiagonal {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, 100px) rotate(90deg);
+    }
+    50% {
+        transform: translate(200px, 0) rotate(180deg);
+    }
+    75% {
+        transform: translate(100px, -100px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
 }

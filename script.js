@@ -4,12 +4,14 @@ let game2 = document.querySelector('#game2');
 let game3 = document.querySelector('#game3');
 let canvas = document.querySelector('#canvas');
 let canvas2 = document.querySelector('#canvas2');
+
 game1.onclick = () => startGame(1);
 game2.onclick = () => startGame(2);
 game3.onclick = () => startGame(3);
 function startGame(gameNumber) {
     canvas.style.display = 'none';
     canvas2.style.display = 'none';
+    canvas3.style.display = 'none';
     gameMenu.style.display = 'none';
     if (gameNumber === 1) {
         canvas.style.display = 'block';
@@ -20,6 +22,7 @@ function startGame(gameNumber) {
         loadGame2();
     } else if (gameNumber === 3) {
         loadGame3();
+        canvas3.style.display = 'block';
     }
 }
 
@@ -196,13 +199,10 @@ function loadGame2() {
     requestAnimationFrame(updatePosition);
 }
 updatePosition();
-let homeButton = document.querySelector('#home');
-homeButton.onclick = () => exitGame();
-
 function exitGame() {
     gameMenu.style.display = 'flex';
     canvas2.style.display = 'none';
-    document.body.style.cursor = 'default';
+    document.body.style.cursor = '';
 }
 document.addEventListener('mousedown', (e) => {
     hand1.src = 'assets/hand2.png';
@@ -227,4 +227,82 @@ window.onkeyup = (event) => {
     if (event.key === 'Escape') {
         exitGame();
     };
-};}
+};};
+
+function loadGame3() {
+    let canvas3 = window.document.querySelector('#canvas3');
+    let targetX = 0;
+    let targetY = 0;
+    let c = 0;
+    let a = 0;
+    let b = 0;
+    let animationId = null;
+    let gun = document.querySelector('.gun');
+    let mole = document.querySelector('#mole1');
+    let mole2 = document.querySelector('#mole2');
+    let mole3 = document.querySelector('#mole3');
+    let prime = document.querySelector('#prime');
+    let totalMolesKilled = 0;
+    document.body.style.cursor = 'none';
+    document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX - gun.offsetWidth / 2;
+        targetY = e.clientY - gun.offsetHeight / 2;
+    });
+
+    function updatePosition() {
+    gun.style.left = gun.offsetLeft + (targetX - gun.offsetLeft) + 'px';
+    gun.style.top = gun.offsetTop + (targetY - gun.offsetTop) + 115 +'px';
+    requestAnimationFrame(updatePosition);
+};
+const moles = document.querySelectorAll('.mole');
+
+function exitGame() {
+    gameMenu.style.display = 'flex';
+    canvas3.style.display = 'none';
+    document.body.style.cursor = '';
+}
+mole.onclick = () => {
+        c++;
+        console.log('Клик по моли:', c);
+        if (c === 3) {
+            mole.style.opacity = '0';
+            mole.style.pointerEvents = 'none';
+            totalMolesKilled++;
+        };
+        let soundmole = new Audio('assets/death.mp3');
+        soundmole.play();
+    };
+    mole2.onclick = () => {
+        a++;
+        console.log('Клик по моли:', c);
+        if (a === 3) {
+            mole2.style.opacity = '0';
+            mole2.style.pointerEvents = 'none';
+            totalMolesKilled++;
+        };
+        let soundmole2 = new Audio('assets/death.mp3');
+        soundmole2.play();
+    };
+    mole3.onclick = () => {
+        b++;
+        console.log('Клик по моли:', c);
+        if (b === 3) {
+            mole3.style.opacity = '0';
+            mole3.style.pointerEvents = 'none';
+            totalMolesKilled++;
+        };
+        let soundmole1 = new Audio('assets/death.mp3');
+        soundmole1.play();
+    };
+document.body.onclick = () => {
+    let shoot = new Audio('assets/shoot.mp3');
+    shoot.play();
+};
+
+updatePosition();
+window.onkeyup = (event) => {
+    console.log("event checks")
+    if (event.key === 'Escape') {
+        exitGame();
+    }; };
+};
