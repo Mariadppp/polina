@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+<meta http-equiv="Content-Language" content="ru">
     <title>Polina</title>
     <link rel="icon" href="assets/hotdog.ico">
     <link rel="stylesheet" href="style.css">
@@ -10,11 +12,26 @@
 <body>
     <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
     <div class="menu" id="menu">
+    <button id="quoteButton" class="quote-button">Случайная цитата Полины Буттовски(@Youngsuitcase)</button>
+    <div class="games-container">
         <button id="game1" class="button" style="background-image: url('assets/game1.png');"></button>
         <button id="game2" class="button" style="background-image: url('assets/game2.png');"></button>
-        <button id="game3" class="button" style="background-image: url('assets/valorant.jpg');"></button>
+        <button id="game3" class="button" style="background-image: url('assets/valorant.jpg');"></button> 
     </div>
+</div>
+
+<div id="quoteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Цитаты Полины Буттовски</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p id="quoteText">Нажми "Новая цитата" чтобы получить цитату</p>
+            <button id="newQuoteBtn" class="new-quote-btn">Новая цитата</button>
+        </div>
     </div>
+</div>
     <div id="canvas" style="display: none;">
         <div id="screamer" style="display: none;"> <img src="assets/nagiev.jpg"></div>
         <div>
@@ -69,8 +86,8 @@
         <img src="assets/mol.png" class="mole" id="mole1">
         <img src="assets/mol.png" class="mole" style="left: 30vw;" id="mole2">
         <img src="assets/mol.png" class="mole" style="left: 60vw;" id="mole3">
-
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

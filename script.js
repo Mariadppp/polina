@@ -4,6 +4,7 @@ let game2 = document.querySelector('#game2');
 let game3 = document.querySelector('#game3');
 let canvas = document.querySelector('#canvas');
 let canvas2 = document.querySelector('#canvas2');
+let canvas3 = document.querySelector('#canvas3');
 
 game1.onclick = () => startGame(1);
 game2.onclick = () => startGame(2);
@@ -21,10 +22,75 @@ function startGame(gameNumber) {
         canvas2.style.display = 'block';
         loadGame2();
     } else if (gameNumber === 3) {
-        loadGame3();
         canvas3.style.display = 'block';
+        loadGame3();
     }
 }
+
+const quotes = [
+    "удали холлоу найт",
+    "Мне нравится думать, что он флексит на твоей голове, отопучто там подушка похожа на твою шапку",
+    "Хорошо что не Политех заканчивал",
+    "Эээ унь пунь ээээ(пародия)",
+    "чорт",
+    "Хочу орешки биг боб. Я принесу на матвея.",
+    "Чем дальше в лес скибиди доп ЕС ес",
+    "газ",
+    "дате орео",
+    "тихо",
+    "Надеюсь он упомянуть меня в своем новом прохождении фнаф 67",
+    "Я хз почему не работает",
+    "Бля когда я уже в валорант пойду",
+    "Просто нет.",
+    "Мне очень понравилось это видео в сети интернет",
+    "Пара у чертей закончилась",
+    "Посмотри видосы про 67",
+    "На шашлык поеду. С температурой",
+    "Привет, это автоматический скебоб. Вижу, что ты не записан ни на пакетный курс, ни на курс этого месяца, а значит у тебя более нет доступа к скебобу. Записывайся на курс и продолжай заниматься со скебобом! Если это ошибка — напиши скебобу напрямую https://t.me/skebob",
+    "Привет. Ты общалась сегодня с Севой (gem)?",
+    "Надеюсь купляша не забудет сегодня про стрим в 18 10",
+    "балл за жопу"
+];
+
+const quoteButton = document.getElementById('quoteButton');
+const modal = document.getElementById('quoteModal');
+const closeBtn = document.querySelector('.close');
+const quoteText = document.getElementById('quoteText');
+const newQuoteBtn = document.getElementById('newQuoteBtn');
+
+
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+}
+
+
+quoteButton.onclick = () => {
+    modal.style.display = 'block';
+    quoteText.textContent = getRandomQuote();
+}
+
+closeBtn.onclick = () => {
+    modal.style.display = 'none';
+}
+
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
+newQuoteBtn.onclick = () => {
+    quoteText.textContent = getRandomQuote();
+}
+
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+    }
+});
 
 function loadGame1() {
 let player = window.document.querySelector('#polina');
@@ -260,6 +326,7 @@ function exitGame() {
     gameMenu.style.display = 'flex';
     canvas3.style.display = 'none';
     document.body.style.cursor = '';
+    document.body.onclick = null;
 }
 mole.onclick = () => {
         c++;
